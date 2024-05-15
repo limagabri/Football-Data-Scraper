@@ -13,9 +13,11 @@ def download_data(league_name, years, league_codes):
             file_name = f'{league_label} - {year}.csv'
             file_path = os.path.join(base_path, file_name)
 
-            if not os.path.exists(file_path):
+            url = f"{base_url}{year[:2]}{year[3:]}/{league_code}.csv"
+            response = requests.head(url)
+            if response.status_code == 200:
                 try:
-                    response = requests.get(f"{base_url}{year[:2]}{year[3:]}/{league_code}.csv")
+                    response = requests.get(url)
                     response.raise_for_status()  # Verifica se houve erro na solicitação HTTP
                     with open(file_path, 'wb') as f:
                         f.write(response.content)
@@ -23,7 +25,7 @@ def download_data(league_name, years, league_codes):
                 except requests.exceptions.RequestException as e:
                     print(f'Failed to download {file_name}: {e}')
             else:
-                print(f'The file {file_name} already exists. It was not downloaded again.')
+                print(f'The file {file_name} does not exist on the server. It was not downloaded.')
 
 def search():
     years = ['93-94', '94-95', '95-96', '96-97', '97-98', '98-99', '99-00',
