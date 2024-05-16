@@ -31,7 +31,7 @@ From 93-94 until 22/23 / De 93-94 até 22/23
    - Python 3.12 installed on your system / Python 3.12 instalado no seu sistema.
    
 2. **Running the Script / Execução do script:**
-   - Run the `football_data_scraper.py` script / Execute o script `football_data_scraper.py`.
+   - Run the `main` script / Execute o script `main.py`.
    - Football data will be scraped from the website and saved to CSV files / Os dados de futebol serão raspados do site e salvos em arquivos CSV.
 
 3. **Results / Resultados:**
